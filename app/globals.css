@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   HDI DESIGN TOKENS
+   Deep-tech, cinematic, restrained. Dark graphite world, controlled
+   hydrogen blue, subtle plasma cyan, mineral silica accents.
+   ========================================================================== */
+
+@theme {
+  /* Color system */
+  --color-void: #05070a;
+  --color-graphite: #0a0e12;
+  --color-charcoal: #10151a;
+  --color-steel: #1a2129;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.16);
+
+  --color-fog: #f4f6f7;
+  --color-mist: #b6bec4;
+  --color-dim: #7d878e;
+
+  --color-hydrogen: #2f8bff;
+  --color-hydrogen-deep: #135ac4;
+  --color-plasma: #46d5f2;
+  --color-silica: #c8b590;
+
+  /* Typography */
+  --font-display: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Layout */
+  --container-shell: 90rem;
+}
+
+:root {
+  --nav-height: 4.5rem;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-fog);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(47, 139, 255, 0.35);
+  color: #fff;
+}
+
+/* Fine technical scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: #232b33;
+  border: 3px solid var(--color-void);
+  border-radius: 5px;
+}
+
+/* --------------------------------------------------------------------------
+   Typography utilities
+   -------------------------------------------------------------------------- */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Compact uppercase technical metadata */
+.meta-label {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-dim);
+}
+
+/* Large editorial headline */
+.headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+/* --------------------------------------------------------------------------
+   Surfaces & lines
+   -------------------------------------------------------------------------- */
+
+.hairline {
+  border-color: var(--color-line);
+}
+
+.glass {
+  background: rgba(8, 11, 14, 0.72);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* Subtle technical grid backdrop */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Film-like vignette to seat 3D scenes into the page */
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(5, 7, 10, 0.85) 100%),
+    linear-gradient(to bottom, rgba(5, 7, 10, 0.6), transparent 18%, transparent 82%, var(--color-void) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   Motion primitives (JS adds .is-inview; reduced motion neutralizes)
+   -------------------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.2s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-line.is-inview {
+  transform: scaleX(1);
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  55% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scroll-cue-bar {
+  animation: scroll-cue 2.2s var(--ease-in-out-soft) infinite;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.flow-line {
+  stroke-dasharray: 4 8;
+  animation: flow-dash 1.6s linear infinite;
+}
+
+@keyframes pulse-node {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.pulse-node {
+  animation: pulse-node 3s var(--ease-in-out-soft) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-line {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-cue-bar,
+  .flow-line,
+  .pulse-node {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Visible focus states */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-hydrogen);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
