@@ -49,8 +49,18 @@ export default function Footer() {
                   {site.phone}
                 </a>
               </li>
-              <li className="text-dim">{site.location}</li>
             </ul>
+
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {site.addresses.map((addr) => (
+                <address key={addr.type} className="not-italic">
+                  <p className="meta-label !text-[0.6rem]">{addr.type}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-dim">
+                    {addr.lines.join(", ")}
+                  </p>
+                </address>
+              ))}
+            </div>
           </div>
         </div>
 

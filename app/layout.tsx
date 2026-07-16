@@ -55,11 +55,24 @@ const organizationJsonLd = {
   email: site.email,
   telephone: site.phone,
   description: site.description,
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "Jawa Barat",
-    addressCountry: "ID",
-  },
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Jl. Haji Nawi Raya No. 45, Gandaria Selatan, Cilandak",
+      addressLocality: "Jakarta Selatan",
+      postalCode: "12420",
+      addressCountry: "ID",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress:
+        "Kawasan Industri Deprimatera Blok C1A No. 1, Jalan Sapan No. 162 B, Tegalluar, Bojongsoang",
+      addressLocality: "Bandung",
+      addressRegion: "Jawa Barat",
+      postalCode: "40297",
+      addressCountry: "ID",
+    },
+  ],
 };
 
 export default function RootLayout({

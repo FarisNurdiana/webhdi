@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "PT Hidro Dinamika Internasional is an Indonesian deep-tech company in Kabupaten Bandung, Jawa Barat, building a hydrogen value chain from silica sand and plasma technology to real applications.",
+    "PT Hidro Dinamika Internasional is an Indonesian deep-tech company with an office in Jakarta Selatan and a workshop in Bandung, building a hydrogen value chain from silica sand and plasma technology to real applications.",
   alternates: { canonical: "/about" },
 };
 

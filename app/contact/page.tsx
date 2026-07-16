@@ -52,12 +52,18 @@ export default function ContactPage() {
                       </a>
                     </dd>
                   </div>
-                  <div>
-                    <dt className="meta-label">Location</dt>
-                    <dd className="mt-3 font-display text-xl text-mist">
-                      {site.location}
-                    </dd>
-                  </div>
+                  {site.addresses.map((addr) => (
+                    <div key={addr.type}>
+                      <dt className="meta-label">{addr.type}</dt>
+                      <dd className="mt-3 font-display text-lg leading-relaxed text-mist">
+                        {addr.lines.map((line, i) => (
+                          <span key={i} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  ))}
                 </dl>
               </Reveal>
             </div>

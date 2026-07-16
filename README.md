@@ -74,7 +74,10 @@ public/images/          drop official assets here (see its README)
   Terios; hydrogen stoves; genset hydrogen–diesel co-firing; Hydrogen Car
   Free Day Jakarta (Oct 2025); IFHE forum; Hydrogen Day 2025 — press coverage
   linked in `data/news.ts`
-- Location: Kabupaten Bandung, Jawa Barat — press coverage
+- Addresses: Office — Jl. Haji Nawi Raya No. 45, Gandaria Selatan, Cilandak,
+  Jakarta Selatan 12420; Workshop — Kawasan Industri Deprimatera Blok C1A
+  No. 1, Jalan Sapan No. 162 B, Tegalluar, Bojongsoang, Bandung, Jawa Barat
+  40297 — provided by the company
 
 ## Performance & accessibility
 

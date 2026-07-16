@@ -15,7 +15,26 @@ export const site = {
   url: "https://www.hidrodinamika.com",
   email: "admin.hdi@hidrodinamika.com",
   phone: "+62-21-751977",
-  location: "Kabupaten Bandung, Jawa Barat, Indonesia",
+  /** Short label for prose contexts */
+  location: "Jakarta Selatan & Bandung, Indonesia",
+  addresses: [
+    {
+      type: "Office",
+      lines: [
+        "Jl. Haji Nawi Raya No. 45",
+        "Gandaria Selatan, Cilandak",
+        "Jakarta Selatan 12420",
+      ],
+    },
+    {
+      type: "Workshop",
+      lines: [
+        "Kawasan Industri Deprimatera Blok C1A No. 1",
+        "Jalan Sapan No. 162 B, Tegalluar",
+        "Bojongsoang, Bandung, Jawa Barat 40297",
+      ],
+    },
+  ],
 } as const;
 
 export type NavItem = {
